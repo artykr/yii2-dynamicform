@@ -127,10 +127,10 @@
             _updateAttributes(widgetOptions);
             _restoreSpecialJs(widgetOptions);
             _fixFormValidaton(widgetOptions);
-            $elem.closest('.' + widgetOptions.widgetContainer).triggerHandler(events.afterInsert, $newclone);
+            $elem.closest('.' + widgetOptions.widgetContainer).trigger(events.afterInsert, $newclone);
         } else {
             // trigger a custom event for hooking
-            $elem.closest('.' + widgetOptions.widgetContainer).triggerHandler(events.limitReached, widgetOptions.limit);
+            $elem.closest('.' + widgetOptions.widgetContainer).trigger(events.limitReached, widgetOptions.limit);
         }
     };
 
@@ -176,14 +176,14 @@
             $todelete = $elem.closest(widgetOptions.widgetItem);
 
             // trigger a custom event for hooking
-            var eventResult = $('.' + widgetOptions.widgetContainer).triggerHandler(events.beforeDelete, $todelete);
+            var eventResult = $('.' + widgetOptions.widgetContainer).trigger(events.beforeDelete, $todelete);
             if (eventResult !== false) {
                 _removeValidations($todelete, widgetOptions, count);
                 $todelete.remove();
                 _updateAttributes(widgetOptions);
                 _restoreSpecialJs(widgetOptions);
                 _fixFormValidaton(widgetOptions);
-                $('.' + widgetOptions.widgetContainer).triggerHandler(events.afterDelete);
+                $('.' + widgetOptions.widgetContainer).trigger(events.afterDelete);
             }
         }
     };
