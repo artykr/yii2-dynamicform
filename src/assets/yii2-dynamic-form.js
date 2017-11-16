@@ -455,7 +455,7 @@
                     _restoreKrajeeDepdrop($(this));
                 }
                 var s2LoadingFunc = typeof initSelect2Loading != 'undefined' ? initSelect2Loading : initS2Loading;
-                var s2OpenFunc = typeof initSelect2DropStyle != 'undefined' ? initSelect2Loading : initS2Loading;
+                var s2OpenFunc = typeof initSelect2DropStyle != 'undefined' ? initSelect2DropStyle : initS2Loading;
                 $.when($('#' + id).select2(configSelect2)).done(s2LoadingFunc(id, '.select2-container--krajee'));
 
                 var kvClose = 'kv_close_' + id.replace(/\-/g, '_');
@@ -466,6 +466,7 @@
 
                 $('#' + id).on('select2:unselect', function() {
                     window[kvClose] = true;
+                    initS2Unselect();
                 });
 
                if (configDepdrop) {
